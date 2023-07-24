@@ -81,7 +81,7 @@ public class DBTest {
 	
 	@Test
 	public void 상세게시글조회테스트() throws Exception {
-		BoardVO vo = session.selectOne("board.dao.BoardDAO.selectBoardByNo", 41);
+		BoardVO vo = boardService.getOneBoard(41);
 		System.out.println(vo);
 	}
 }

@@ -14,7 +14,10 @@ public interface BoardService {
 	/**
 	 * 전체 게시글 조회
 	 */
-	List<BoardVO> getAllBoardList();
+	public List<BoardVO> getAllBoardList();
 	
-	BoardVO getOneBoard(int no);
+	/**
+	 * 게시글 상세조회 
+	 */
+	public BoardVO getOneBoard(int no);
 }
