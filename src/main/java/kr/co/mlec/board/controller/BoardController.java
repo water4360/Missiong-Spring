@@ -3,6 +3,7 @@ package kr.co.mlec.board.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.mlec.board.service.BoardService;
 import kr.co.mlec.board.vo.BoardVO;
+import kr.co.mlec.member.vo.MemberVO;
 
 @Controller // 얘가 없으면 스프링 컨테이너가 해석할 수 없음
 public class BoardController {
@@ -71,8 +72,13 @@ public class BoardController {
 	}
 
 	@GetMapping("/board/write")
-	public void writeForm(Model model) {
+	public void writeForm(Model model, HttpSession session) {
 		BoardVO board = new BoardVO();
+		MemberVO user = (MemberVO)session.getAttribute("loginUser");
+		if(user != null) {
+			//로그인이 되어 있으면
+			board.setWriter(user.getId());
+		}
 
 //		그런데 만약 이렇게 값을 적어주면 이게 JSP로 넘어갔을 때에도 계속 유지가 됨.
 //		board.setTitle("크하하하");
