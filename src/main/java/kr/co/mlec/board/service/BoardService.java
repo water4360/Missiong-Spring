@@ -20,4 +20,9 @@ public interface BoardService {
 	 * 게시글 상세조회 
 	 */
 	public BoardVO getOneBoard(int no);
+	
+	/**
+	 * 게시글 등록
+	 */
+	public void addBoard(BoardVO vo);
 }

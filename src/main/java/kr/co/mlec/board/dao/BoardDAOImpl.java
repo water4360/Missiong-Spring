@@ -27,4 +27,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return vo;
 	}
 
+	@Override
+	public void insertBoard(BoardVO vo) {
+		session.insert("board.dao.BoardDAO.insertBoard", vo);
+		
+	}
+
 }

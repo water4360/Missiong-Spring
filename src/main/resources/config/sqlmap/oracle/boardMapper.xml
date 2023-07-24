@@ -18,4 +18,9 @@
 		FROM T_BOARD WHERE NO = #{no}
 	</select>
 	
+	<!-- 새글등록 -->
+	<insert id="insertBoard" parameterType="boardVO">
+		INSERT INTO T_BOARD(NO, TITLE, WRITER, CONTENT)
+		VALUES(SEQ_T_BOARD_NO.NEXTVAL, #{title}, #{writer}, #{content})
+	</insert>
 </mapper>

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>전체 게시글 조회</h2>
-
+		<a href="${ pageContext.request.contextPath }/board/write">새글등록</a>
 	<table>
 		<tr>
 			<th>글번호</th>
@@ -20,13 +20,14 @@
 		<c:forEach items="${ boardList }" var="board">
 			<tr>
 				<td>${board.no }</td>
-				<td><a href="${pageContext.request.contextPath}/board/${ board.no }"> ${board.title }</a></td>
+				<td><a
+					href="${pageContext.request.contextPath}/board/${ board.no }">
+						${board.title }</a></td>
 				<td>${board.writer }</td>
 				<td>${board.regDate }</td>
 			</tr>
 		</c:forEach>
 	</table>
-
 
 </body>
 </html>
