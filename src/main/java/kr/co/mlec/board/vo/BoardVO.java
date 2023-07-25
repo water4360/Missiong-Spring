@@ -21,6 +21,9 @@ public class BoardVO {
 		private String regDate;
 		
 		
+		private int replyCnt;
+		
+		
 		public BoardVO() {
 			super();
 		}
@@ -72,8 +75,20 @@ public class BoardVO {
 		public void setRegDate(String regDate) {
 			this.regDate = regDate;
 		}
+		
 
-		public BoardVO(int no, String title, String writer, String content, int viewCnt, String regDate) {
+		public int getReplyCnt() {
+			return replyCnt;
+		}
+
+		public void setReplyCnt(int replyCnt) {
+			this.replyCnt = replyCnt;
+		}
+
+		
+
+		public BoardVO(int no, String title, String writer,
+				String content, int viewCnt, String regDate, int replyCnt) {
 			super();
 			this.no = no;
 			this.title = title;
@@ -81,12 +96,14 @@ public class BoardVO {
 			this.content = content;
 			this.viewCnt = viewCnt;
 			this.regDate = regDate;
+			this.replyCnt = replyCnt;
 		}
 
 		@Override
 		public String toString() {
 			return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content
-					+ ", viewCnt=" + viewCnt + ", regDate=" + regDate + "]";
+					+ ", viewCnt=" + viewCnt + ", regDate=" + regDate + ", replyCnt=" + replyCnt + "]";
 		}
+
 		
 }

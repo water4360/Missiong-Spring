@@ -7,9 +7,15 @@
 <mapper namespace="board.dao.BoardDAO">
 
 	<select id="selectAllBoard" resultType="boardVO">
-		SELECT NO, TITLE, WRITER, TO_CHAR(REG_DATE, 'YYYY-mm-DD') REGDATE
-			FROM T_BOARD
-			ORDER BY NO DESC
+		SELECT NO, TITLE, WRITER
+        , TO_CHAR(REG_DATE, 'yyyy-mm-dd') REGDATE
+        , (
+            SELECT COUNT(*)
+            FROM T_REPLY
+            WHERE BOARD_NO = B.NO
+            ) AS REPLYCNT
+		    FROM T_BOARD B
+		    ORDER BY NO DESC
 	</select>
 	
 	<!-- 글번호로 조회 -->
